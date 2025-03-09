@@ -5,7 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy:sit": "npm run build && aws s3 sync dist/ s3://sit-mapkraken-bucket --delete && aws cloudfront create-invalidation --distribution-id $(aws cloudformation describe-stacks --stack-name route-53-sit --query \"Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue\" --output text) --paths \"/*\"",
+    "deploy:stg": "npm run build && aws s3 sync dist/ s3://stg-mapkraken-bucket --delete && aws cloudfront create-invalidation --distribution-id $(aws cloudformation describe-stacks --stack-name route-53-stg --query \"Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue\" --output text) --paths \"/*\"",
+    "deploy:prd": "npm run build && aws s3 sync dist/ s3://prd-mapkraken-bucket --delete && aws cloudfront create-invalidation --distribution-id $(aws cloudformation describe-stacks --stack-name route-53-prd --query \"Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue\" --output text) --paths \"/*\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
