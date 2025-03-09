@@ -1,15 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <el-row justify="center">
+    <el-col :span="12" >
+      <MapKrakenBranding />
+      <SocialIcons msg="Welcome to Your Vuetify App" />
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { ElRow, ElCol } from 'element-plus'
+
+import SocialIcons from './components/SocialIcons.vue'
+
+import MapKrakenBranding from './components/MapKrakenBranding.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    'el-row': ElRow,
+    'el-col': ElCol,
+    MapKrakenBranding,
+    SocialIcons
   }
 }
 </script>
@@ -21,6 +32,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh; /* Take full viewport height */
+}
+.center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
