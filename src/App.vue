@@ -1,27 +1,13 @@
 <template>
-  <el-row justify="center">
-    <el-col :span="12" >
-      <MapKrakenBranding />
-      <SocialIcons msg="Welcome to Your Vuetify App" />
-    </el-col>
-  </el-row>
+  <div id="app">
+    <router-view></router-view> <!-- Display the component for the current route -->
+  </div>
 </template>
 
 <script>
-import { ElRow, ElCol } from 'element-plus'
-
-import SocialIcons from './components/SocialIcons.vue'
-
-import MapKrakenBranding from './components/MapKrakenBranding.vue'
 
 export default {
-  name: 'App',
-  components: {
-    'el-row': ElRow,
-    'el-col': ElCol,
-    MapKrakenBranding,
-    SocialIcons
-  }
+  name: 'App'
 }
 </script>
 
@@ -36,11 +22,5 @@ export default {
   flex-direction: column;
   justify-content: center;
   height: 100vh; /* Take full viewport height */
-}
-.center-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 </style>
