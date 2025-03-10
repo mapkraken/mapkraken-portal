@@ -1,36 +1,35 @@
 <template>
   <div class="home-page">
-      <el-row justify="center">
-    <el-col :span="12" >
-      <MapKrakenBranding />
-      <SocialIcons msg="Welcome to Your Vuetify App" />
-      <router-link to="/examples">
-        <button>Examples</button>  <!-- This button will navigate to the About page -->
-      </router-link>
-    </el-col>
-  </el-row>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <MapKrakenBranding />
+          <SocialIcons msg="Welcome to Your BootstrapVue App" />
+          <router-link to="/examples">
+            <button class="btn">Examples</button> <!-- Bootstrap-styled button -->
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { ElRow, ElCol } from 'element-plus'
 import MapKrakenBranding from '@/components/MapKrakenBranding.vue';
 import SocialIcons from '@/components/SocialIcons.vue';
+
 export default {
   name: 'HomePage',
   components: {
-    'el-row': ElRow,
-    'el-col': ElCol,
-    MapKrakenBranding,  // Register the components
+    MapKrakenBranding,
     SocialIcons
   }
 }
-
 </script>
 
 <style scoped>
 .home-page {
-  text-align: center;
   padding: 20px;
+  text-align: center;
 }
 </style>

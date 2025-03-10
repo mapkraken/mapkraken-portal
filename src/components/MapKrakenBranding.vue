@@ -1,6 +1,14 @@
 <template>
-  <div class="branding-container">
-    <img class="fit-screen" alt="Vue logo" src="../assets/MapKraken logo_C.jpg">
+  <div class="branding-container container-fluid">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <img
+          class="fit-screen img-fluid"
+          alt="MapKraken Branding"
+          src="../assets/MapKraken logo_C.jpg"
+        >
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,9 +22,6 @@ export default {
 .branding-container {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .fit-screen {

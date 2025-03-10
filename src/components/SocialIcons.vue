@@ -1,5 +1,5 @@
 <template>
-  <div class="social-icons">
+  <div class="social-icons d-flex justify-content-center gap-4 p-3">
     <a :href="githubUrl" target="_blank" title="GitHub" class="icon-link">
       <font-awesome-icon :icon="['fab', 'github']" size="2x" />
     </a>
