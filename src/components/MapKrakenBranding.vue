@@ -21,7 +21,6 @@ export default {
 <style scoped>
 .branding-container {
   width: 100%;
-  height: 100%;
 }
 
 .fit-screen {
