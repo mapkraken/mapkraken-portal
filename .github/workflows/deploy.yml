@@ -1,0 +1,61 @@
+name: Deploy Vue.js App
+
+on:
+  push:
+    branches:
+      - sit
+      - stg
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Adjust to your Vue.js 3.2.13 requirement
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Run linting
+      - name: Lint
+        run: npm run lint
+
+      # Build the app
+      - name: Build
+        run: npm run build
+
+      # Configure AWS credentials
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 # Adjust to your region
+
+      # Deploy based on branch
+      - name: Deploy to SIT
+        if: github.ref == 'refs/heads/sit'
+        run: |
+          aws s3 sync dist/ s3://sit-mapkraken-bucket --delete
+          aws cloudfront create-invalidation --distribution-id $(aws cloudformation describe-stacks --stack-name route-53-sit --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" --output text) --paths "/*"
+
+      - name: Deploy to STG
+        if: github.ref == 'refs/heads/stg'
+        run: |
+          aws s3 sync dist/ s3://stg-mapkraken-bucket --delete
+          aws cloudfront create-invalidation --distribution-id $(aws cloudformation describe-stacks --stack-name route-53-stg --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" --output text) --paths "/*"
+
+      - name: Deploy to PRD
+        if: github.ref == 'refs/heads/main'
+        run: |
+          aws s3 sync dist/ s3://prd-mapkraken-bucket --delete
+          aws cloudfront create-invalidation --distribution-id $(aws cloudformation describe-stacks --stack-name route-53-prd --query "Stacks[0].Outputs[?OutputKey=='CloudFrontDistributionId'].OutputValue" --output text) --paths "/*"
