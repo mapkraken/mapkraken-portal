@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'ExamplesPage'
+  name: 'PortfolioPage'
 };
 </script>
 

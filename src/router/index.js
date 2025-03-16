@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
-import ExamplesPage from '@/views/ExamplesPage.vue';  // Import the new ExamplesPage component
+import PortfolioPage from '@/views/PortfolioPage.vue';  // Import the new ExamplesPage component
 
 const routes = [
   {
@@ -9,9 +9,9 @@ const routes = [
     component: HomePage,
   },
   {
-    path: '/examples',
-    name: 'Examples',
-    component: ExamplesPage,  // Add the ExamplesPage route
+    path: '/portfolio',
+    name: 'Portfolio',
+    component: PortfolioPage,
   },
 ];
 

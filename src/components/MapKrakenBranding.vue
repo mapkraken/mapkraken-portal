@@ -1,11 +1,11 @@
 <template>
   <div class="branding-container container-fluid">
     <div class="row justify-content-center align-items-center">
-      <div class="col-12 col-md-8 col-lg-6">
+      <div class="col-12">
         <img
           class="fit-screen img-fluid"
           alt="MapKraken Branding"
-          src="../assets/MapKraken.png"
+          src="../assets/MapKraken1.png"
         >
       </div>
     </div>

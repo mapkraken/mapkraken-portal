@@ -2,11 +2,11 @@
   <div class="home-page">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-6">
           <MapKrakenBranding />
+        <div class="col-12 col-md-6">
           <SocialIcons msg="Welcome to Your BootstrapVue App" />
           <router-link to="/portfolio">
-            <button class="btn">Portfolio</button> <!-- Bootstrap-styled button -->
+            <button class="btn">portfolio</button> <!-- Bootstrap-styled button -->
           </router-link>
         </div>
       </div>
