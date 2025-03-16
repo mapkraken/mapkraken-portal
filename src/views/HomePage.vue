@@ -5,8 +5,8 @@
         <div class="col-12 col-md-6">
           <MapKrakenBranding />
           <SocialIcons msg="Welcome to Your BootstrapVue App" />
-          <router-link to="/examples">
-            <button class="btn">Examples</button> <!-- Bootstrap-styled button -->
+          <router-link to="/portfolio">
+            <button class="btn">Portfolio</button> <!-- Bootstrap-styled button -->
           </router-link>
         </div>
       </div>

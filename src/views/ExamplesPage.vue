@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Examples</h1>
-    <p>Welcome to the examples page!</p>
+    <h1>portfolio</h1>
+    <p>Welcome to the portfolio page!</p>
   </div>
 </template>
 

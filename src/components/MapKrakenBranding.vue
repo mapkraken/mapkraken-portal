@@ -5,7 +5,7 @@
         <img
           class="fit-screen img-fluid"
           alt="MapKraken Branding"
-          src="../assets/MapKraken logo_C.jpg"
+          src="../assets/MapKraken.png"
         >
       </div>
     </div>
