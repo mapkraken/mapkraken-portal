@@ -11,7 +11,14 @@
         <p>{{ item.description?.S || 'No description' }}</p>
         <div class="links">
           <a :href="item.site_url?.S || '#'" target="_blank">Visit Site</a>
-          <a :href="item.repo_url?.S || '#'" target="_blank">View Repo</a>
+          <a 
+            v-for="(repo, index) in item.repo_urls?.L || []" 
+            :key="index" 
+            :href="repo.S || '#'" 
+            target="_blank"
+          >
+            View Repo {{ index + 1 }}
+          </a>
         </div>
       </div>
     </div>
