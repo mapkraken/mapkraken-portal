@@ -1,12 +1,11 @@
 <template>
   <div class="portfolio-page">
     <h1>Portfolio</h1>
-    <div class="portfolio-container">
+    <div class="portfolio-container" v-if="portfolioItems && portfolioItems.length > 0">
       <div 
         v-for="item in portfolioItems" 
         :key="item.SK?.S || 'default-key'" 
         class="portfolio-card"
-        v-if="portfolioItems && portfolioItems.length > 0"
       >
         <h2>{{ item.title?.S || 'Untitled' }}</h2>
         <p>{{ item.description?.S || 'No description' }}</p>
@@ -15,9 +14,9 @@
           <a :href="item.repo_url?.S || '#'" target="_blank">View Repo</a>
         </div>
       </div>
-      <div v-else>
-        <p>No portfolio items available.</p>
-      </div>
+    </div>
+    <div v-else>
+      <p>No portfolio items available.</p>
     </div>
   </div>
 </template>
