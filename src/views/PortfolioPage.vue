@@ -4,15 +4,19 @@
     <div class="portfolio-container">
       <div 
         v-for="item in portfolioItems" 
-        :key="item.SK.S" 
+        :key="item.SK?.S || 'default-key'" 
         class="portfolio-card"
+        v-if="portfolioItems && portfolioItems.length > 0"
       >
-        <h2>{{ item.title.S }}</h2>
-        <p>{{ item.description.S }}</p>
+        <h2>{{ item.title?.S || 'Untitled' }}</h2>
+        <p>{{ item.description?.S || 'No description' }}</p>
         <div class="links">
-          <a :href="item.site_url.S" target="_blank">Visit Site</a>
-          <a :href="item.repo_url.S" target="_blank">View Repo</a>
+          <a :href="item.site_url?.S || '#'" target="_blank">Visit Site</a>
+          <a :href="item.repo_url?.S || '#'" target="_blank">View Repo</a>
         </div>
+      </div>
+      <div v-else>
+        <p>No portfolio items available.</p>
       </div>
     </div>
   </div>
@@ -23,7 +27,7 @@ export default {
   name: 'PortfolioPage',
   data() {
     return {
-      portfolioItems: [] // Holds the portfolio items fetched from the API
+      portfolioItems: [], // Holds the portfolio items fetched from the API
     };
   },
   created() {
@@ -33,13 +37,18 @@ export default {
     async fetchPortfolioItems() {
       try {
         const response = await fetch('https://sit-api.mapkraken.com/portfolio');
+        if (!response.ok) {
+          throw new Error('Failed to fetch portfolio items');
+        }
         const data = await response.json();
-        this.portfolioItems = data;
+        console.log('Fetched portfolio items:', data); // Debug the response
+        this.portfolioItems = Array.isArray(data) ? data : [];
       } catch (error) {
         console.error('Error fetching portfolio items:', error);
+        this.portfolioItems = []; // Fallback to empty array on error
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -69,18 +78,6 @@ export default {
 
 .portfolio-card p {
   margin: 0 0 12px;
-}
-
-.resources ul {
-  padding: 0;
-  list-style: none;
-}
-
-.resources li {
-  background: #f4f4f4;
-  margin: 4px 0;
-  padding: 4px 8px;
-  border-radius: 4px;
 }
 
 .links a {
