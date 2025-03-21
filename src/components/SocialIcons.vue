@@ -22,11 +22,11 @@ export default {
     },
     linkedinUrl: {
       type: String,
-      default: 'https://linkedin.com/in/yourusername'
+      default: 'https://www.linkedin.com/in/tyler-mccracken-7aa54556'
     },
     email: {
       type: String,
-      default: 'your.email@example.com'
+      default: 'mapkrakenlabs@gmail.com'
     }
   }
 };
