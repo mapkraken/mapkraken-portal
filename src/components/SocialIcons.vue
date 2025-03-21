@@ -22,7 +22,7 @@ export default {
     },
     linkedinUrl: {
       type: String,
-      default: 'https://www.linkedin.com/in/tyler-mccracken-7aa54556'
+      default: 'https://www.linkedin.com/company/mapkraken-labs-llc'
     },
     email: {
       type: String,
