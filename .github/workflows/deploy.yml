@@ -31,7 +31,7 @@ jobs:
 
       # Build the app
       - name: Build
-        run: npm run build
+        run: VUE_APP_STAGE=${{ github.ref_name }} npm run build
 
       # Configure AWS credentials
       - name: Configure AWS Credentials
