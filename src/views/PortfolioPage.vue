@@ -44,7 +44,9 @@ export default {
       try {
         // Construct the URL dynamically using the environment variable
         const stage = process.env.VUE_APP_STAGE || 'sit'; // Default to 'sit' if VUE_APP_STAGE is not set
-        const apiUrl = `https://${stage}-api.mapkraken.com/portfolio`;
+        const apiUrl = stage === 'prd' 
+          ? `https://api.mapkraken.com/portfolio` 
+          : `https://${stage}-api.mapkraken.com/portfolio`;
 
         const response = await fetch(apiUrl);
         if (!response.ok) {

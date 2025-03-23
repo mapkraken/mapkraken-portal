@@ -31,7 +31,14 @@ jobs:
 
       # Build the app
       - name: Build
-        run: VUE_APP_STAGE=${{ github.ref_name }} npm run build
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            STAGE="prd";
+          else
+            STAGE="${{ github.ref_name }}";
+          fi
+          echo "Building for stage: $STAGE"
+          VUE_APP_STAGE=$STAGE npm run build
 
       # Configure AWS credentials
       - name: Configure AWS Credentials
