@@ -42,7 +42,11 @@ export default {
   methods: {
     async fetchPortfolioItems() {
       try {
-        const response = await fetch('https://sit-api.mapkraken.com/portfolio');
+        // Construct the URL dynamically using the environment variable
+        const stage = process.env.VUE_APP_STAGE || 'sit'; // Default to 'sit' if VUE_APP_STAGE is not set
+        const apiUrl = `https://${stage}-api.mapkraken.com/portfolio`;
+
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error('Failed to fetch portfolio items');
         }
